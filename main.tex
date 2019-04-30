@@ -1,4 +1,4 @@
-\documentclass[a4paper,twoside,draft]{report}
+\documentclass[a4paper,twoside]{report}
 
 \input{preamble.tex}
 
@@ -11,9 +11,19 @@
 \begin{document}
 \maketitle
 
+\tableofcontents
+
 \input{chapters/introduction.tex}
 \input{chapters/background.tex}
 \input{chapters/techniques.tex}
+\input{chapters/minimality.tex}
 \input{chapters/completeness.tex}
 \input{chapters/conclusion.tex}
+
+\bibliographystyle{plain}
+\bibliography{main}
+
+\appendix
+
+\input{chapters/a_proofs.tex}
 \end{document}
