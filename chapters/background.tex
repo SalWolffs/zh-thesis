@@ -1,16 +1,62 @@
 \chapter{Background}\label{chap:background}
 
-Sample citation: \cite{backens2018zhcalculus}
 
 \section{The ZX-calculus}\label{sec:zx-background}
 \ROUGH{In \cite{CD1}\cite{CD2}, the ZX-calculus was introduced, forming the
-first of a family of diagrammatic languages for reasoning about quantum logic.
-It is still the most accessible and well-explored of these languages, especially
-with the availability of \cite{CKbook} , a comprehensive textbook on the subject.
-Therefore, before going into the details of any particular language, it helps to
-be familiar with the ZX-calculus.}
+first of a family of diagrammatic languages (in the sense of Penrose's graphical
+notation) for reasoning about quantum logic.  It is still the most accessible
+and well-explored of these languages, especially with the availability of
+\cite{CKbook} , a comprehensive textbook on the subject.  Therefore, before
+going into the details of any particular language, it helps to be familiar with
+the ZX-calculus.}
 
 \TODO{Add reference to Penrose graphical notation, with proper cite}
+
+\ROUGH{The ZX-calculus and its derivatives are all based around the same set of
+principles: linear maps $\mathbb{C}^{(2^n)} \rightarrow \mathbb{C}^{(2^m)}$ (which corresponds to maps from $n$ to $m$ qubits) are
+represented by graphs with $n$ dangling "input" wires on one side and $m$
+dangling "output" wires on the other. In this thesis, we will follow the same
+convention as in \cite{CKbook} by having data flow upwards, with input wires at
+the bottom and output wires at the top: 
+$$\intf{\tikzfig{example-nin-mout}} := f : \mathbb{C}^{(2^n)} \rightarrow
+\mathbb{C}^{(2^m)}$$ 
+where $\intf{\cdot}$ is the semantic evaluation bracket interpreting diagrams as
+linear maps in the conventional way. It is important to note that alternative
+semantics are also possible, from whose compatibility with the axioms of a particular
+calculus various proofs regarding (in)completeness or minimality of those axioms
+w.r.t. the standard interpretation can be derived. In this chapter and
+\autoref{chap:phasefree} we will introduce the standard interpretations for the
+various calculi, and in \autoref{chap:minimality} and
+\autoref{chap:completeness} we will use such alternative interpretations to show
+minimality and completeness.
+
+All calculi share some semantic composition rules. $\otimes$-composition and
+$\circ$-composition are represented as parallel resp. sequential composition:
+$$\intf{\tikzfig{g-otimes-f}} := g \otimes f , 
+  \intf{\tikzfig{g-circ-f}}   := g \circ f    $$
+
+All calculi allow substitution: if two graphs are equal in a calculus, then
+any two graphs differing only by which of the two they contain as a subgraph are
+also equal:
+$$\tikzfig{generic-f} = \tikzfig{generic-g} \Rightarrow \tikzfig{f-clouded} =
+\tikzfig{g-clouded}$$
+
+And while the following two rules are not universal in general, they are very
+common (and correspond to desirable properties of the underlying system) and do
+hold in all the calculi we'll consider: 
+\begin{itemize}
+    \item An empty wire of any length corresponds to the identity mapping: %
+        ${\intf{\tikzfig{id-wire}}=id :\mathbb{C}^2 \rightarrow \mathbb{C}^2}$
+    \item Only Topology Matters: if two graphs can be deformed into each other,
+        without breaking connections or reordering inputs and outputs, they are
+        the same graph:$$ \tikzfig{otm1} = \tikzfig{otm2} = \tikzfig{otm3} \neq
+        \tikzfig{otm-counter}$$
+\end{itemize}
+
+
+ }
+
+
 \begin{TODOLIST}
 Introduce here, in order:
 \begin{enumerate}
@@ -28,6 +74,7 @@ Introduce here, in order:
 
 \section{The ZH-calculus}\label{sec:zh-background}
 
+Sample citation: \cite{backens2018zhcalculus}
 \begin{TODOLIST}
 Introduce here, (in order?):
 \begin{enumerate}
