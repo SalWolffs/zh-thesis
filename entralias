@@ -1,0 +1,1 @@
+while true; do ls main.tex figures/* chapters/* | entr -d make; done

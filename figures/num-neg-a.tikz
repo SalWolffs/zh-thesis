@@ -1,0 +1,14 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=white dot] (0) at (0, 0) {};
+		\node [style=none] (1) at (0, 1) {};
+		\node [style=hadamard] (2) at (-0.75, 0) {};
+		\node [style=hadamard] (3) at (0, -1) {\hnum{a}};
+		\node [style=none] (4) at (-1.5, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1.center) to (0);
+		\draw (2) to (0);
+		\draw (3) to (0);
+	\end{pgfonlayer}
+\end{tikzpicture}

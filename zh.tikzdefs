@@ -18,6 +18,9 @@
 \newcommand{\zxdiagrams}{ZX-diagrams\xspace}
 \newcommand{\dzx}{\textnormal{$\mathrm{\Delta}$ZX}\xspace}
 \newcommand{\sneg}{\scalebox{0.5}{$\neg$}}
+\newcommand{\bsneg}{\scalebox{0.5}{$\bm\neg$}}
+
+\newcommand{\hnum}[1]{\ensuremath{\bm{#1}_H}}
 
 %DEFINITIONS
 \newcommand{\GreyDef}{(\hyperref[eq:defx]{X})\xspace}

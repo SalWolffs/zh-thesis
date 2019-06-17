@@ -1,0 +1,77 @@
+\chapter{Matrix form}\label{chap:matrices}
+The original ZH-calculus completeness proof relied on rewriting to a normal form
+which essentially represented the underlying matrix directly. While we can't
+repeat the full result here for lack of the parametrised axioms it's based on,
+we can define a matrix form, represent some numbers and some matrices, and
+rewrite some diagrams to their corresponding matrices. This allows us to
+construct equality proofs for some diagrams which have proven otherwise
+intractable. Note that this purely syntactic sugar; everything defined in this
+chapter is defined in terms of the phasefree ZH-calculus, and all proofs can be
+translated back to yield valid though potentially lengthy proofs.
+
+\section{Numbers}
+Before defining matrices, it's useful to consider what numbers we can
+represent, and how. The number-representing diagrams we want for use in matrices
+will need to be connected and maskable. To do this, we'll standardize numbers on
+one output wire, and make them mimic H-box behaviour from the original paper:
+plugging $\tikzfig{measure-grey}$ into them should make them disappear, and
+plugging $\tikzfig{measure-not}$ into them should leave a scalar diagram which,
+under the standard interpretation, translates to the number represented. We can
+define the following numbers: \\
+${\tikzfig{num-minus} = \hnum{-1}}$ , 
+${\tikzfig{num-zero} = \tikzfig{grey-zero} = \hnum{0}}$ ,
+${\tikzfig{num-half} = \hnum{\frac{1}{2}}}$ ,
+${\tikzfig{num-one} = \hnum{1}}$ ,
+${\tikzfig{num-neg-a} = \hnum{-a}}$
+
+, so we will use diagrams with one output wire. We also
+want them to be maskable, so we'll choose diagrams that disappear when plugged
+with 
+
+
+was proven complete by essentially embedding
+arbitrary matrices into it as normal forms and proving every diagram could be
+transformed into such a normal form. While we haven't been able to rewrite
+arbitrary 
+
+
+
+\section{Trinary matrices}
+\begin{TODOLIST}
+    Write meta-lemmata as already used informally.
+    \begin{enumerate}
+        \item Some numbers can be assigned a formal representation
+        \item (reduced) normal forms can be written as a matrix of formally %
+            represented numbers
+        \item Schur products of normal forms can be computed pointwise,
+            including in their matrix representation (straight from ZH2018)
+        \item The generalised ortho rule/splitting lemma lets us do the
+            topological part of contraction.
+        \item For some matrices, including those only containing \{-1, 0, 1\}, we
+            can prove the cases of the (A) rule needed to do the computational
+            part of contraction
+        \item We can de-introduce a factor $\frac{1}{2}$
+    \end{enumerate}
+\end{TODOLIST}
+
+\section{Proving the (\&) rule}
+
+\subsection{Pre-matrix steps}
+First, we need to bring the diagrams into a shape that our tools can deal with,
+since sequential composition isn't directly supported. Since the upper leg of
+the left-hand side is not in reduced normal form, we'll first find that so we
+can replace it in the diagram.\\
+$\tikzfig{down-triangle-inv-to-rednorm}$
+Now we can prepare the left-hand side:\\
+$\tikzfig{and-lhs}$ 
+$= \tikzfig{and-lhs-seq-rednorm}$ 
+$= \tikzfig{and-lhs-star-rednorm}$
+And doing the same for the right-hand side:
+$\tikzfig{and-rhs}$
+$= \tikzfig{and-rhs-star-rednorm}$\\
+
+\subsection{Calculating the matrix}
+Using our earlier theorems, we can now write the above equations in matrix
+form:\\
+$\tikzfig{and-lhs-small-matrices}$
+$= $
