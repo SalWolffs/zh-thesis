@@ -10,30 +10,67 @@ chapter is defined in terms of the phasefree ZH-calculus, and all proofs can be
 translated back to yield valid though potentially lengthy proofs.
 
 \section{Numbers}
-Before defining matrices, it's useful to consider what numbers we can
-represent, and how. The number-representing diagrams we want for use in matrices
-will need to be connected and maskable. To do this, we'll standardize numbers on
-one output wire, and make them mimic H-box behaviour from the original paper:
-plugging $\tikzfig{measure-grey}$ into them should make them disappear, and
-plugging $\tikzfig{measure-not}$ into them should leave a scalar diagram which,
-under the standard interpretation, translates to the number represented. We can
-define the following numbers: \\
-${\tikzfig{num-minus} = \hnum{-1}}$ , 
-${\tikzfig{num-zero} = \tikzfig{grey-zero} = \hnum{0}}$ ,
-${\tikzfig{num-half} = \hnum{\frac{1}{2}}}$ ,
-${\tikzfig{num-one} = \hnum{1}}$ ,
-${\tikzfig{num-neg-a} = \hnum{-a}}$
+\ROUGH{
+First, we'll define a few formal "numbers" in our calculus (we can define more
+later, but these will illustrate our setup nicely). Because our numbers are going
+to be used as entries in a matrix, rather than as direct scalars, they'll need
+to have at least one edge wire to connect to for manipulation. In fact, we'll
+give them all exactly one output wire, and then define how to turn that into any
+number of input and output wires. 
+}
 
-, so we will use diagrams with one output wire. We also
-want them to be maskable, so we'll choose diagrams that disappear when plugged
-with 
+\begin{definition}
+    A \textbf{number state} is a diagram
+    $$\tikzfig{numstate} \text{ satisfying } \tikzfig{numstatedef}$$
+    
+    A \textbf{number} is a diagram (up to diagrammatic equality)
+    $$\tikzfig{numdef}$$
+    where $\tikzfig{numstate}$ is a number state.
+\end{definition}
+\begin{remark*}
+    The diagrammatic equality provision, besides keeping our meaning of equality
+    consistent, also means that all number states are, in fact, numbers.
+\end{remark*}
 
+Since we can cheat a bit by choosing diagrams that in the full ZH-calculus are
+provably equal to the numbers we want, we'll do just that. Since this isn't the
+full ZH-calculus and we can't use its rules to handle numbers, we'll limit
+ourselves to a few we can prove specific cases of the missing rules for:
+$$\tikzfig{numdefs}$$
+Two things to note here: first, all these numbers are boldfaced and subscripted
+`H'. This is to distinguish \NOTE{should this be distinguish or differentiate?}
+them from the complex numbers which parametrize the full ZH-calculus. Second,
+while the last rule is general, combining it with the first gives us
+$$\tikzfig{minusone}$$
+And for the higher arity versions, we define:
+$$\tikzfig{aritydef}$$
 
-was proven complete by essentially embedding
-arbitrary matrices into it as normal forms and proving every diagram could be
-transformed into such a normal form. While we haven't been able to rewrite
-arbitrary 
+\section{Matrices}\label{sec:matrices}
+Recall that the original ZH-calculus in \cite{backens2018zhcalculus} used
+indexing maps to define normal forms.  Since those maps did not use parameters
+anywhere, we can use them here as well.  For completeness' sake, we repeat the
+definition:
+$$\tikzfig{bitmaskdef}$$
+Where $\tikzfig{nottofirst}$ and $\tikzfig{nottozeroth}$ . We'll also want the
+binary representation function 
+$b^n : \mathbb{N} \rightarrow \mathbb{B}^n, i \mapsto \left( \left \lfloor
+\frac{i}{2^{n-1}}\right \rfloor \text{mod } i \right) \ldots \left( \left \lfloor
+\frac{i}{2^{0}}\right \rfloor \text{mod } i \right)$ . Where $n$ is obvious or
+irrelevant, we'll leave it implicit, $b^n =: b$.
 
+Now that we have both numbers and indices, we can define matrices within the
+phasefree ZH-calculus:
+$$\tikzfig{matrixdef}$$
+
+Since this produces $O(n^2)$ nodes and $O(n^3)$ wires for maps $\mathbb{C}^n
+\rightarrow \mathbb{C}^n$, this clearly doesn't produce very tractable diagrams
+when we need to expand a matrix into its definition. Worse, some of the more
+useful tricks cause a lot of $\hnum{1}$ entries in intermediate steps next to
+the entries we're actually interested in (this is because $\hnum{1}$ is the
+pointwise multiplicative identity, allowing us to construct diagrams by taking
+Schur products of simpler diagrams). To mitigate this at least slightly (and in
+specific cases we're interested in, significantly), we introduce the
+\textbf{reduced normal form}
 
 
 \section{Trinary matrices}
