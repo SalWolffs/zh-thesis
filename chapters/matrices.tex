@@ -22,28 +22,26 @@ number of input and output wires.
 \begin{definition}
     A \textbf{number state} is a diagram
     $$\tikzfig{numstate} \text{ satisfying } \tikzfig{numstatedef}$$
-    
-    A \textbf{number} is a diagram (up to diagrammatic equality)
+    A \textbf{number} is a diagram 
     $$\tikzfig{numdef}$$
-    where $\tikzfig{numstate}$ is a number state.
+    up to diagrammatic equality, where $\tikzfig{numstate}$ is a number state.
 \end{definition}
 \begin{remark*}
     The diagrammatic equality provision, besides keeping our meaning of equality
     consistent, also means that all number states are, in fact, numbers.
 \end{remark*}
 
-Since we can cheat a bit by choosing diagrams that in the full ZH-calculus are
-provably equal to the numbers we want, we'll do just that. Since this isn't the
-full ZH-calculus and we can't use its rules to handle numbers, we'll limit
-ourselves to a few we can prove specific cases of the missing rules for:
+Informally, we want to choose our number states such that plugging
+$\tikzfig{notmeasure}$ into them yields a scalar whose standard interpretation
+equals the complex number we've named our number state for. That is, we want
+$$\forall \hnum{a} \intf{\tikzfig{num-a-scalar}} = a$$
+Some examples of diagrams satisfying these constraints are
 $$\tikzfig{numdefs}$$
-Two things to note here: first, all these numbers are boldfaced and subscripted
-`H'. This is to distinguish \NOTE{should this be distinguish or differentiate?}
-them from the complex numbers which parametrize the full ZH-calculus. Second,
-while the last rule is general, combining it with the first gives us
+It's easy to check in the full ZH-calculus that these equal the parametrized
+H-boxes they replace. In particular, setting $\hnum{a} = \hnum{1}$ in the last
+rule also gives us
 $$\tikzfig{minusone}$$
-And for the higher arity versions, we define:
-$$\tikzfig{aritydef}$$
+
 
 \section{Matrices}\label{sec:matrices}
 Recall that the original ZH-calculus in \cite{backens2018zhcalculus} used
@@ -69,8 +67,18 @@ useful tricks cause a lot of $\hnum{1}$ entries in intermediate steps next to
 the entries we're actually interested in (this is because $\hnum{1}$ is the
 pointwise multiplicative identity, allowing us to construct diagrams by taking
 Schur products of simpler diagrams). To mitigate this at least slightly (and in
-specific cases we're interested in, significantly), we introduce the
-\textbf{reduced normal form}
+specific cases we're interested in, significantly), we define a
+\textbf{reduced normal form} where we leave out all the diagram elements
+corresponding to \hnum{1} entries from matrix diagrams. This is a valid
+simplification per the following lemma:
+\begin{lemma}
+    Given $n,m \in \mathbb{N}, B \subset {1 \ldots n} \times {1 \ldots m}, A =
+    {1 \ldots n} \times {1 \ldots m}\\B$, we have 
+    $$\tikzfig{rednormal-rule}$$
+\end{lemma}
+\begin{proof}
+    $$\tikzfig{rednormal-proof}$$
+\end{proof}
 
 
 \section{Trinary matrices}
