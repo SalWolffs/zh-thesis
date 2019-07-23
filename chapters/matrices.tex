@@ -125,8 +125,20 @@ most useful cases.
 \end{definition}
 
 \begin{lemma}\label{lem:extclosed}
-    Given a diagram \tikzfig{normal-S-diag} in trinary normal form, 
+    Given a diagram \tikzfig{normal-S-diag} in trinary normal form, we can bring
+    \tikzfig{normal-S-extend} into trinary normal form.
 \end{lemma}
+\begin{proof}
+\end{proof}
+\begin{corollary}
+    Since bending and swapping wires merely rearranges index bits without
+    destroying the matrix form, we can generalize the above to all matrices and
+    arbitrary positions of the extension by transforming to and from normal
+    form. So, for any trinary matrix $M$ and $i, j \geq 0$, there are trinary
+    matrices $M'$ and $M''$ with
+    $$\tikzfig{matrix-M-extend} = \tikzfig{matrix-Mprime} \text{and}%
+    \tikzfig{matrix-M-extend-down} = \tikzfig{matrix-Mdoubleprime}$$
+\end{corollary}
 
 \begin{TODOLIST}
     Write meta-lemmata as discussed
