@@ -59,7 +59,8 @@ irrelevant, we'll leave it implicit, $b^n =: b$.
 Now that we have both numbers and indices, we can define matrices within the
 phasefree ZH-calculus:
 \begin{definition}
-    A diagram is said to be in \textbf{matrix form} if it matches
+    A diagram is said to be in \textbf{matrix form} (and is called a
+    \textbf{matrix diagram}) if it matches
     $$\tikzfig{matrix-M-diag-expanded}$$
     And any such diagram may be written in shorthand as 
     $$\tikzfig{matrix-diag-def}$$
@@ -76,10 +77,8 @@ useful tricks cause a lot of $\hnum{1}$ entries in intermediate steps next to
 the entries we're actually interested in (this is because $\hnum{1}$ is the
 pointwise multiplicative identity, allowing us to construct diagrams by taking
 Schur products of simpler diagrams). To mitigate this at least slightly (and in
-specific cases we're interested in, significantly), we define a
-\textbf{reduced matrix form} where we leave out all the diagram elements
-corresponding to \hnum{1} entries from matrix diagrams. This is a valid
-simplification per the following lemma:
+specific cases we're interested in, significantly), we make the following
+observation: 
 \begin{lemma}
     Given $n,m \in \mathbb{N}, B \subset {1 \ldots n} \times {1 \ldots m}, A =
     {1 \ldots n} \times {1 \ldots m}\\B$, we have 
@@ -89,7 +88,13 @@ simplification per the following lemma:
     $$\tikzfig{rednormal-proof}$$
 \end{proof}
 
-Based on this, we add the following general definition
+Based on this, we add the following definition
+\begin{definition}
+    A diagram is said to be \textbf{reduced matrix form} if it's equal to a
+    matrix form with all elements corresponding to \hnum{1} removed. More
+    generally, any variation on matrix forms can be \textbf{reduced} by removing
+    all elements corresponding to \hnum{1}.
+\end{definition}
 
 \section{Calculation}\label{sec:calculation}
 Given the notation above, we can add some limited arithmetic and basic
@@ -112,14 +117,15 @@ most useful cases.
 \section{Trinary matrices}
 
 \begin{definition}
-    A matrix \tikzfig{indexed-matrix-M} is called a \textbf{trinary} matrix if%
+    A matrix \tikzfig{indexed-matrix-M} is called a \textbf{trinary matrix} if%
     $\forall i,j \in \underline{n} \prod \underline{m}, M_{i,j} \in \{\hnum{-1},%
-    \hnum{0},\hnum{1}\}$. A diagram is a \textbf{trinary normal form} if it's a
-    trinary matrix diagram without inputs.
+    \hnum{0},\hnum{1}\}$. A diagram in (reduced) matrix or normal form described
+    by a trinary matrix is in (reduced) \textbf{trinary matrix form} resp.
+    \textbf{trinary normal form} .
 \end{definition}
 
 \begin{lemma}\label{lem:extclosed}
-    Given a trinary \tikzfig{matrix-M-diag}, 
+    Given a diagram \tikzfig{normal-S-diag} in trinary normal form, 
 \end{lemma}
 
 \begin{TODOLIST}
