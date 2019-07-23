@@ -58,7 +58,16 @@ irrelevant, we'll leave it implicit, $b^n =: b$.
 
 Now that we have both numbers and indices, we can define matrices within the
 phasefree ZH-calculus:
-$$\tikzfig{matrixdef}$$
+\begin{definition}
+    A diagram is said to be in \textbf{matrix form} if it matches
+    $$\tikzfig{matrix-M-diag-expanded}$$
+    And any such diagram may be written in shorthand as 
+    $$\tikzfig{matrix-diag-def}$$
+
+    Furthermore, a diagram is said to be in \textbf{normal form} if it is in
+    matrix form and has no input wires, matching the shape of normal forms in
+    \cite{backens2018zhcalculus}.
+\end{definition}
 
 Since this produces $O(n^2)$ nodes and $O(n^3)$ wires for maps $\mathbb{C}^n
 \rightarrow \mathbb{C}^n$, this clearly doesn't produce very tractable diagrams
@@ -68,7 +77,7 @@ the entries we're actually interested in (this is because $\hnum{1}$ is the
 pointwise multiplicative identity, allowing us to construct diagrams by taking
 Schur products of simpler diagrams). To mitigate this at least slightly (and in
 specific cases we're interested in, significantly), we define a
-\textbf{reduced normal form} where we leave out all the diagram elements
+\textbf{reduced matrix form} where we leave out all the diagram elements
 corresponding to \hnum{1} entries from matrix diagrams. This is a valid
 simplification per the following lemma:
 \begin{lemma}
@@ -80,8 +89,61 @@ simplification per the following lemma:
     $$\tikzfig{rednormal-proof}$$
 \end{proof}
 
+Based on this, we add the following general definition
+
+\section{Calculation}\label{sec:calculation}
+Given the notation above, we can add some limited arithmetic and basic
+manipulations. Specifically, we'll define the product and the average on
+numbers, prove some results mirroring extension, contraction, and convolution
+from \cite{backens2018zhcalculus} and precompute the product and average for the
+most useful cases.
+
+\begin{definition}
+    If \hnum{a} and \hnum{b} are defined, then \hnum{a \star b} is defined as
+    $$\tikzfig{num-prod-def}$$
+\end{definition}
+
+\begin{definition}
+    If \hnum{a} and \hnum{b} are defined, then \hnum{AVG(a, b)} is defined as
+    $$\tikzfig{num-avg-def}$$
+\end{definition}
+
 
 \section{Trinary matrices}
+
+\begin{definition}
+    A matrix \tikzfig{indexed-matrix-M} is called a \textbf{trinary} matrix if%
+    $\forall i,j \in \underline{n} \prod \underline{m}, M_{i,j} \in \{\hnum{-1},%
+    \hnum{0},\hnum{1}\}$. A diagram is a \textbf{trinary normal form} if it's a
+    trinary matrix diagram without inputs.
+\end{definition}
+
+\begin{lemma}\label{lem:extclosed}
+    Given a trinary \tikzfig{matrix-M-diag}, 
+\end{lemma}
+
+\begin{TODOLIST}
+    Write meta-lemmata as discussed
+    \begin{enumerate}
+        \item Extension on \{\hnum{-1},\hnum{0},\hnum{1}\} is closed.
+        \item Convolution on \{\hnum{-1},\hnum{0},\hnum{1}\} is closed.
+        \item Contraction on \{\hnum{-1},\hnum{0},\hnum{1}\} goes to %
+            \{\hnum{-2},\hnum{-1},\hnum{0},\hnum{1},\hnum{2}\}.
+        \item Given unique number representations, matrices are unique.
+        \item \{\hnum{-2},\hnum{-1},\hnum{0},\hnum{1},\hnum{2}\} form %
+            a set of unique number representations by the soundness of the %
+            calculus.
+        \item The previous 3 statements give the uniqueness of diagrams w.r.t. %
+            $\intf{-}$ after contraction on a trinary matrix
+        \item Since $\intf{\tikzfig{h-toffoli}} =
+            \intf{\tikzfig{triangle-toffoli}} $, the above gives that
+            \tikzfig{h-toffoli} = \tikzfig{triangle-toffoli} by turning both
+            into quintary matrices: first extend and convolve to trinary
+            matrices, then contract once to get a quintary matrix (which is in
+            fact a trinary matrix, but that is a happy coincidence).
+    \end{enumerate}
+\end{TODOLIST}
+
 \begin{TODOLIST}
     Write meta-lemmata as already used informally.
     \begin{enumerate}
