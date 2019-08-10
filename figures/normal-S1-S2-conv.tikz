@@ -1,0 +1,41 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-1.25, 0) {$S\scriptstyle1$};
+		\node [style=none] (1) at (-2, 0.75) {};
+		\node [style=none] (2) at (-2, -0.75) {};
+		\node [style=none] (3) at (-0.5, -0.75) {};
+		\node [style=none] (4) at (-0.5, 0.75) {};
+		\node [style=none] (18) at (-1.75, 0.75) {};
+		\node [style=none] (21) at (-0.75, 0.75) {};
+		\node [style=none] (22) at (1.25, 0) {$S\scriptstyle2$};
+		\node [style=none] (23) at (0.5, 0.75) {};
+		\node [style=none] (24) at (0.5, -0.75) {};
+		\node [style=none] (25) at (2, -0.75) {};
+		\node [style=none] (26) at (2, 0.75) {};
+		\node [style=none] (28) at (0.75, 0.75) {};
+		\node [style=none] (31) at (1.75, 0.75) {};
+		\node [style=white dot] (32) at (-0.5, 1.5) {};
+		\node [style=white dot] (33) at (0.5, 1.5) {};
+		\node [style=none] (34) at (-0.5, 2.25) {};
+		\node [style=none] (35) at (0.5, 2.25) {};
+		\node [style=none] (37) at (-0.75, 1) {$\scriptstyle\cdots$};
+		\node [style=none] (38) at (0, 1.75) {$\scriptstyle\cdots$};
+		\node [style=none] (39) at (0.75, 1) {$\scriptstyle\cdots$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (4.center) to (3.center);
+		\draw (3.center) to (2.center);
+		\draw (2.center) to (1.center);
+		\draw (1.center) to (4.center);
+		\draw (26.center) to (25.center);
+		\draw (25.center) to (24.center);
+		\draw (24.center) to (23.center);
+		\draw (23.center) to (26.center);
+		\draw (32) to (18.center);
+		\draw (33) to (21.center);
+		\draw (32) to (28.center);
+		\draw (33) to (31.center);
+		\draw (35.center) to (33);
+		\draw (34.center) to (32);
+	\end{pgfonlayer}
+\end{tikzpicture}

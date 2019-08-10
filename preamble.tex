@@ -10,6 +10,7 @@
 \usepackage{hyperref}
 \usepackage[all]{hypcap}
 \usepackage[nottoc]{tocbibind}
+\usepackage[normalem]{ulem}
 
 \theoremstyle{definition}
 \newtheorem{theorem}{Theorem}[section]
@@ -32,6 +33,7 @@
 \newtheorem*{lemma*}{Lemma}
 \newtheorem*{proposition*}{Proposition}
 \newtheorem*{remark*}{Remark}
+
 
 \usepackage{tikzit}
 \input{zh.tikzdefs}
@@ -124,6 +126,18 @@
         \draw (0.center) to (2.center);
         \draw (1.center) to (3.center);
     \end{pgfonlayer}
+\end{tikzpicture}
+}
+
+\newcommand{\numstate}[1]{
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+        \node [style=hadamard] (0) at (0, -0.25) {\ensuremath{#1}};
+        \node [style=gray dot] (1) at (0, 0.5) {\ensuremath{\sneg}};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1) to (0);
+	\end{pgfonlayer}
 \end{tikzpicture}
 }
 

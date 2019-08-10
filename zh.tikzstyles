@@ -25,6 +25,7 @@
 \tikzstyle{triangle}=[regular polygon, regular polygon sides=3, fill=white, draw=black, inner sep=0pt, minimum width=1em, tikzit draw=blue, tikzit category=ZH-pf]
 \tikzstyle{not}=[fill={rgb,255: red,128; green,128; blue,128}, draw=black, shape=circle, font={$\neg$}, dot]
 \tikzstyle{half}=[fill=black, draw=black, shape=circle, star, star points=4, tikzit fill=orange, tikzit draw=magenta, inner sep=1.2pt, line width=0.4pt, tikzit category=ZH-pf, star point ratio=0.2]
+\tikzstyle{bitbox}=[fill={rgb,255: red,191; green,191; blue,191}, draw=black, shape=rectangle, tikzit category=ZH-pf]
 
 % Edge styles
 \tikzstyle{gray}=[-, draw={blue!60!white}, tikzit draw=blue]

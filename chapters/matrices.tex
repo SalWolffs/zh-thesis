@@ -38,9 +38,45 @@ $$\forall \hnum{a} \intf{\tikzfig{num-a-scalar}} = a$$
 Some examples of diagrams satisfying these constraints are
 $$\tikzfig{numdefs}$$
 It's easy to check in the full ZH-calculus that these equal the parametrized
-H-boxes they replace. In particular, setting $\hnum{a} = \hnum{1}$ in the last
-rule also gives us
-$$\tikzfig{minusone}$$
+H-boxes they replace. The rule for \hnum{-1} is given explicitly as a
+simplifying exception to the rule for \hnum{-a}.
+
+\subsection{Canonical sets of number states}\label{sec:canonsets}
+Since normal forms depend for their uniqueness on uniquely representing each
+number, we run into an issue not found in the full ZH-calculus: choosing a
+representative for each interpretation-equivalence class of number states. Since
+we can't provide an exhaustive list of all representable numbers, and the
+preferred representation might depend on the techniques we want to apply, we
+need to define a general criterion to recognize valid normal form components.
+\begin{definition}
+    A \textbf{canonical set} is a set $A$ of number states such that $\forall a,
+    b \in A, \intf{a} = \intf{b} \Rightarrow a = b$ where $=$ is graph equality,
+    rather than rewrite equality.
+\end{definition}
+\begin{remark}
+    Any subset of a canonical set is itself canonical, since removing elements
+    can never create a pair which violates the uniqueness condition.
+\end{remark}
+
+Now we are free to choose canonical sets based on convenience, and add numbers
+as we need them, so long as we don't break the uniqueness condition in doing so.
+Normal forms are well-defined so long as we never compare two normal forms based
+on canonical sets whose union is not a canonical set.
+
+\begin{lemma}\label{lem:canoncanon}
+    The set $\left\{\tikzfig{numstate-a}\ \middle|\ \hnum{a} \in \{\hnum{-2}, \hnum{-1}, \hnum{-\frac{1}{2}}, \hnum{0},
+    \hnum{\frac{1}{2}}, \hnum{1}, \hnum{2}\}\right\}$ is canonical
+\end{lemma}
+\begin{proof}
+    Straightforward calculation shows that, for each \hnum{a},
+    $\intf{\tikzfig{numstate-a}} =
+    \begin{pmatrix}
+        1 \\
+        a
+    \end{pmatrix}$, so every state has a different interpretation.
+\end{proof}
+
+
 
 
 \section{Matrices}\label{sec:matrices}
@@ -58,7 +94,7 @@ irrelevant, we'll leave it implicit, $b^n =: b$.
 
 Now that we have both numbers and indices, we can define matrices within the
 phasefree ZH-calculus:
-\begin{definition}
+\begin{definition}\label{def:matrix-form}
     A diagram is said to be in \textbf{matrix form} (and is called a
     \textbf{matrix diagram}) if it matches
     $$\tikzfig{matrix-M-diag-expanded}$$
@@ -66,8 +102,8 @@ phasefree ZH-calculus:
     $$\tikzfig{matrix-diag-def}$$
 
     Furthermore, a diagram is said to be in \textbf{normal form} if it is in
-    matrix form and has no input wires, matching the shape of normal forms in
-    \cite{backens2018zhcalculus}.
+    matrix form, has no input wires, and the number states form a canonical set.
+    This matches the shape of normal forms in \cite{backens2018zhcalculus}.
 \end{definition}
 
 Since this produces $O(n^2)$ nodes and $O(n^3)$ wires for maps $\mathbb{C}^n
@@ -117,18 +153,35 @@ most useful cases.
 \section{Trinary matrices}
 
 \begin{definition}
-    A matrix \tikzfig{indexed-matrix-M} is called a \textbf{trinary matrix} if%
-    $\forall i,j \in \underline{n} \prod \underline{m}, M_{i,j} \in \{\hnum{-1},%
-    \hnum{0},\hnum{1}\}$. A diagram in (reduced) matrix or normal form described
-    by a trinary matrix is in (reduced) \textbf{trinary matrix form} resp.
-    \textbf{trinary normal form} .
+    A matrix diagram \tikzfig{indexed-matrix-M} is in \textbf{trinary matrix
+    form} and called a \textbf{trinary matrix diagram} (resp. \textbf{quintary
+    matrix form} and \textbf{quintary matrix diagram}) if $\forall i,j \in
+    \underline{n} \times \underline{m}, M_{i,j} \in \left\{\hnum{-1},
+    \hnum{0},\hnum{1}\right\}$ (resp. $M_{i,j} \in \left\{\hnum{-2},\hnum{-1},
+    \hnum{0},\hnum{1},\hnum{2}\right\}$). A (reduced) trinary or quintary matrix
+    diagram without inputs is in (reduced) trinary resp. quintary normal form.
 \end{definition}
+\begin{remark}
+    Since all the number states allowed by this definition are in the canonical
+    set from \autoref{lem:canoncanon}, every trinary or quintary matrix diagram
+    without inputs is in fact in normal form.
+\end{remark}
 
 \begin{lemma}\label{lem:extclosed}
     Given a diagram \tikzfig{normal-S-diag} in trinary normal form, we can bring
-    \tikzfig{normal-S-extend} into trinary normal form.
+    the extended diagram \tikzfig{normal-S-extend} into trinary normal form.
 \end{lemma}
 \begin{proof}
+    The proof mirrors that in \cite{backens2018zhcalculus}, but since that proof
+    relies on the introduction axiom, which we don't have here, we need to show
+    we can perform the same step for our numbers \hnum{-1}, \hnum{0}, and
+    \hnum{1}
+    $$\tikzfig{intro-minone-proof}$$
+    $$\tikzfig{intro-zero-proof}$$
+    $$\tikzfig{intro-one-proof}$$
+    And now the rest of the proof is a straightforward translation from the
+    original:
+    $$\tikzfig{ext-closed-proof}$$
 \end{proof}
 \begin{corollary}
     Since bending and swapping wires merely rearranges index bits without
@@ -136,29 +189,243 @@ most useful cases.
     arbitrary positions of the extension by transforming to and from normal
     form. So, for any trinary matrix $M$ and $i, j \geq 0$, there are trinary
     matrices $M'$ and $M''$ with
-    $$\tikzfig{matrix-M-extend} = \tikzfig{matrix-Mprime} \text{and}%
+    $$\tikzfig{matrix-M-extend} = \tikzfig{matrix-Mprime} \text{ and }%
     \tikzfig{matrix-M-extend-down} = \tikzfig{matrix-Mdoubleprime}$$
+    In practical use, the rule for determining the resulting matrix is that
+    extending on output duplicates rows, extending on input duplicates columns,
+    and duplication happens in chunks of $2^j$. This follows directly from the
+    values of indices with either a $0$ or $1$ inserted after bit $i$ and the
+    roles of the upper and lower index maps.
 \end{corollary}
+
+\begin{lemma}\label{lem:convclosed}
+    Given two diagrams \tikzfig{normal-S1-diag},
+    \tikzfig{normal-S2-diag} in
+    trinary normal form, we can bring the convolution
+    \tikzfig{normal-S1-S2-conv} into trinary normal form.
+\end{lemma}
+\begin{proof}
+    Again, we follow \cite{backens2018zhcalculus}, after going through the
+    necessary replacements of the multiplication axiom.
+    $$\tikzfig{mult-minmin}$$
+    $$\tikzfig{mult-zeroany}$$
+    $$\tikzfig{mult-oneany}$$
+    And now the rest of the proof is a straightforward translation from the
+    original:
+    $$\tikzfig{conv-closed-proof}$$
+\end{proof}
+\begin{corollary}
+    Again, since bending wires doesn't destroy the property of being a matrix
+    form, we can generalize to matrices: given trinary matrices
+    $M\scriptstyle1$ and $M\scriptstyle2$
+    with matching numbers of input and output wires, we can convolve their
+    diagrams and get the resulting diagram into a trinary matrix form. The
+    result is a diagram whose matrix is the Schur product of $M\scriptstyle1$
+    and $M\scriptstyle2$: $(M{\scriptstyle1} \star  M{\scriptstyle2})_{i,j} =%
+    M{\scriptstyle1}_{i,j} \star M{\scriptstyle2}_{i,j}$.
+\end{corollary}
+
+\begin{lemma}\label{lem:tricontrquint}
+    Given a diagram \tikzfig{normal-S-diag} in trinary normal form, the
+    contraction \tikzfig{normal-S-contract} can be brought into quintary normal
+    form.
+\end{lemma}
+\begin{proof}
+    Translating this proof from \cite{backens2018zhcalculus} is slightly more
+    work, because we need to show the essence of the disconnect lemma (B.3)
+    holds using our numbers, calculate the equivalent of the average axiom, and
+    show that we're left with exactly one scalar spider left over. Then, because
+    we lack an elegant proof for introduction on \hnum{2}, we instead have to
+    apply the reverse directions of convolution and introduction to first
+    isolate and then eliminate a factor of \hnum{\frac{1}{2}} from each
+    component.
+
+
+    The replication of the disconnect lemma is effectively one-to-one, though we
+    will track scalars. Luckily, most of the heavy lifting is done by the
+    generalized ortho lemma, so we only need to redo the final steps here.  By
+    induction on $n$ (where the case $n=0$ is trivial using (ZS2)):
+    $$\tikzfig{b3-claim} \text{(IH)}$$
+    $$\tikzfig{b3-translated}$$
+
+    Applying this, and lemma (3.3) from \cite{backens2018zhcalculus} to our
+    left-hand diagram, we replicate most of the original proof:
+    $$\tikzfig{contract-proof-replicate}$$
+    But run into the lack of a general average rule. However, we can calculate
+    the averages we'll encounter on trinary normal forms. Since we have a
+    \tikzfig{half} everywhere, we'll add it to our left-hand side.
+    $$\tikzfig{avg-minmin}$$
+    $$\tikzfig{avg-onemin}$$
+    $$\tikzfig{avg-zeromin}$$
+    $$\tikzfig{avg-oneone}$$
+    $$\tikzfig{avg-zeroone}$$
+    $$\tikzfig{avg-zerozero}$$
+
+    Finally, we need to show how each of the above outcomes can be written as
+    a product with \hnum{frac{1}{2}}
+    $$\tikzfig{intro-two-proof}$$
+    $$\tikzfig{twice-min}$$
+    $$\tikzfig{twice-minhalf}$$
+    $$\tikzfig{twice-zero}$$
+    $$\tikzfig{twice-half}$$
+    $$\tikzfig{twice-one}$$
+
+    Which allows us to take the final few steps, with the meaning of
+    parenthesized numbers matching normal arithmetic:
+    $$\tikzfig{contract-proof-finale}$$
+
+\end{proof}
+\begin{corollary}
+    As before, given trinary matrix $M$, we can contract along any output or
+    input and bring the result into quintary matrix form.
+\end{corollary}
+
+\begin{lemma}\label{lem:uniquematrices}
+    Matrices consisting of canonical number states are unique: Given two matrix
+    diagrams $\tikzfig{matrix-M1-diag},\tikzfig{matrix-M2-diag}$ whose
+    constituent number states belong to the same canonical set, we have
+    $$\intf{\tikzfig{matrix-M1-diag}} = \intf{\tikzfig{matrix-M2-diag}} \iff
+    \tikzfig{matrix-M1-diag} = \tikzfig{matrix-M2-diag}$$
+\end{lemma}
+\begin{proof}
+    Since the interpretation of a matrix diagram is given by
+    $\intf{\tikzfig{matrix-M-diag}}_{i,j} = e_i^T \intf{\tikzfig{matrix-M-diag}}
+    e_j$, and basis vectors $e_i^T,e_j$ are represented by sequences of
+    \tikzfig{greymeasure} and \tikzfig{notmeasure}, 
+    resp.  
+    \tikzfig{greystate} and \tikzfig{notstate} 
+    we can extend our concept of index maps to index measurements and states by
+    dropping the output resp. input wires,
+    and take $\neg b$ to be the bitwise complement of $b \in \mathbb{B}^n$ to
+    encode $e_i^T$ and $e_j$ as 
+    $$e_i^T = \intf{\tikzfig{index-i-measure}} \text{ resp. }
+    e_j = \intf{\tikzfig{index-j-state}}$$
+    Applying these to our matrix, we get 
+    $$e_i^T\intf{\tikzfig{matrix-M-diag}}e_j =
+    \intf{\tikzfig{index-i-measure}} \circ
+    \intf{\tikzfig{matrix-M-diag}} \circ
+    \intf{\tikzfig{index-j-state}}$$
+    $$= \intf{\tikzfig{matrix-M-selection-steps}}$$
+    where $\oplus$ is the bitwise exclusive or. Now, where either the resulting
+    index state or measurement is unequal to $11 ... 11$ (that is, if $i \not =
+    k$ or $j \not = l$), we have at least one \tikzfig{greymeasure} or
+    \tikzfig{greystate} connected to the number in that instance of the !-box.
+    Since our numbers are invariant under swaps and leg flipping, we can bring
+    it to the side as \tikzfig{greyside} and per 
+    $$\tikzfig{number-destruction-proof}$$
+    we have
+    $$\tikzfig{index-selection-demo}$$
+    Giving $\intf{\tikzfig{matrix-M-diag}} = 
+    \begin{pmatrix}
+        \intf{\numstate{M_{1,1}}} & \cdots & \intf{\numstate{M_{1,m}}} \\
+        \vdots & \ddots & \vdots \\
+        \intf{\numstate{M_{n,1}}} & \cdots & \intf{\numstate{M_{n,m}}}
+    \end{pmatrix}$.
+
+    Now since $\intf{\tikzfig{num-a}} = 
+    \begin{pmatrix}
+        \intf{\tikzfig{num-greymeasure}} \\
+        \intf{\tikzfig{num-notmeasure}}
+    \end{pmatrix}$ and $\intf{\tikzfig{num-greymeasure}} =
+    \intf{\tikzfig{empty}} = 1$,
+    states with differing interpretation can only differ in their second
+    component $\intf{\tikzfig{num-notmeasure}}$.  This gives us
+    $$
+    \intf{\tikzfig{numstate-M1ij}} = \intf{\tikzfig{numstate-M2ij}}
+    \iff
+    \intf{\tikzfig{numstate-M1ij-not}} = \intf{\tikzfig{numstate-M2ij-not}}
+    ,$$
+    $$
+    \intf{\tikzfig{matrix-M1-diag}} = \intf{\tikzfig{matrix-M2-diag}} 
+    \iff
+    \forall (i,j) \in \underline{n} \times \underline{m},
+    \intf{\tikzfig{numstate-M1ij-not}} = \intf{\tikzfig{numstate-M2ij-not}}
+    ,$$
+    $$\text{and so }
+    \intf{\tikzfig{matrix-M1-diag}} = \intf{\tikzfig{matrix-M2-diag}} \iff
+    \forall (i,j) \in \underline{n} \times \underline{m},
+    \intf{\tikzfig{numstate-M1ij}} = \intf{\tikzfig{numstate-M2ij}}
+    $$
+    \ROUGH{The core proof step is based on the above, the uniqueness of the
+    number states, and the fact that a matrix is completely determined by the
+    number state at each index}
+
+    Because of how matrix diagrams are defined, they can only differ in what
+    number states appear where. Therefore,
+    $$
+    {\tikzfig{matrix-M1-diag}} = {\tikzfig{matrix-M2-diag}} \iff
+    \forall (i,j) \in \underline{n} \times \underline{m},
+    \tikzfig{numstate-M1ij} = \tikzfig{numstate-M2ij}
+    $$
+    And since the number states form a canonical set, we have
+    $$
+    \intf{\tikzfig{numstate-M1ij}} = \intf{\tikzfig{numstate-M2ij}}
+    \iff
+    \tikzfig{numstate-M1ij} = \tikzfig{numstate-M2ij}$$
+    Giving us 
+    \begin{align*}
+    \intf{\tikzfig{matrix-M1-diag}} = \intf{\tikzfig{matrix-M2-diag}} 
+        &\iff
+    \forall (i,j) \in \underline{n} \times \underline{m},
+    \intf{\tikzfig{numstate-M1ij}} = \intf{\tikzfig{numstate-M2ij}} \\
+    \forall (i,j) \in \underline{n} \times \underline{m},
+    \intf{\tikzfig{numstate-M1ij}} = \intf{\tikzfig{numstate-M2ij}} 
+        &\iff
+    \forall (i,j) \in \underline{n} \times \underline{m},
+    \tikzfig{numstate-M1ij} = \tikzfig{numstate-M2ij} \\
+    \forall (i,j) \in \underline{n} \times \underline{m},
+    \tikzfig{numstate-M1ij} = \tikzfig{numstate-M2ij} 
+        &\iff
+    \forall (i,j) \in \underline{n} \times \underline{m},
+    \tikzfig{numstate-M1ij} = \tikzfig{numstate-M2ij} \\
+    \forall (i,j) \in \underline{n} \times \underline{m},
+    \tikzfig{numstate-M1ij} = \tikzfig{numstate-M2ij} 
+        &\iff
+    \tikzfig{matrix-M1-diag} = \tikzfig{matrix-M2-diag}
+    \end{align*}
+    Which completes the proof.
+
+
+\end{proof}
+
+Combining the above lemmata, we can take any number of diagrams in (reduced)
+trinary matrix form, extend and convolve them as much as we want, contract them
+once, and since the elements of a quintary matrix form a canonical set, if the
+interpretation of the diagrams is the same, the matrices must be the same. Thus,
+any two diagrams with the same interpretation can be rewritten into each other
+so long as they both can be expressed as a contraction on some combination of
+extensions and convolutions of trinary matrices. Note that this is a worst case;
+some quintary matrices resulting from contraction happen to also be trinary, and
+therefore can be extended, convolved, and contracted further.
+
+\begin{theorem}
+    Since $\intf{\tikzfig{h-toffoli}} = \intf{\tikzfig{triangle-toffoli}}$ and
+    both sides can be expressed as a contraction on a trinary matrix,
+    we have $\tikzfig{h-toffoli} = \tikzfig{triangle-toffoli}$ .
+\end{theorem}
+\begin{proof}
+    \tikzfig{toffoli-decomp-parallel}
+\end{proof}
 
 \begin{TODOLIST}
     Write meta-lemmata as discussed
     \begin{enumerate}
-        \item Extension on \{\hnum{-1},\hnum{0},\hnum{1}\} is closed.
-        \item Convolution on \{\hnum{-1},\hnum{0},\hnum{1}\} is closed.
-        \item Contraction on \{\hnum{-1},\hnum{0},\hnum{1}\} goes to %
-            \{\hnum{-2},\hnum{-1},\hnum{0},\hnum{1},\hnum{2}\}.
-        \item Given unique number representations, matrices are unique.
-        \item \{\hnum{-2},\hnum{-1},\hnum{0},\hnum{1},\hnum{2}\} form %
+        \item \sout{Extension on \{\hnum{-1},\hnum{0},\hnum{1}\} is closed.}
+        \item \sout{Convolution on \{\hnum{-1},\hnum{0},\hnum{1}\} is closed.}
+        \item \sout{Contraction on \{\hnum{-1},\hnum{0},\hnum{1}\} goes to %
+            \{\hnum{-2},\hnum{-1},\hnum{0},\hnum{1},\hnum{2}\}.}
+        \item \sout{Given unique number representations, matrices are unique.}
+        \item \sout{\{\hnum{-2},\hnum{-1},\hnum{0},\hnum{1},\hnum{2}\} form %
             a set of unique number representations by the soundness of the %
-            calculus.
-        \item The previous 3 statements give the uniqueness of diagrams w.r.t. %
-            $\intf{-}$ after contraction on a trinary matrix
-        \item Since $\intf{\tikzfig{h-toffoli}} =
+            calculus.}
+        \item \sout{The previous 3 statements give the uniqueness of diagrams w.r.t. %
+            $\intf{-}$ after contraction on a trinary matrix}
+        \item \sout{Since $\intf{\tikzfig{h-toffoli}} =
             \intf{\tikzfig{triangle-toffoli}} $, the above gives that
             \tikzfig{h-toffoli} = \tikzfig{triangle-toffoli} by turning both
             into quintary matrices: first extend and convolve to trinary
             matrices, then contract once to get a quintary matrix (which is in
-            fact a trinary matrix, but that is a happy coincidence).
+            fact a trinary matrix, but that is a happy coincidence).}
     \end{enumerate}
 \end{TODOLIST}
 

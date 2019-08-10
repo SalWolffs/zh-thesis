@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-0.5, -0.75) {};
+		\node [style=none] (1) at (0.5, -0.75) {};
+		\node [style=none] (2) at (0, 1) {};
+		\node [style=hadamard] (3) at (0, 0.5) {};
+		\node [style=hadamard] (4) at (0, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (4) to (1.center);
+		\draw (4) to (0.center);
+		\draw (3) to (4);
+		\draw (2.center) to (3);
+	\end{pgfonlayer}
+\end{tikzpicture}

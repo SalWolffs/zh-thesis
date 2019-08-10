@@ -1,0 +1,18 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (0, -0.25) {$M{\scriptstyle1}_{i,j}$};
+		\node [style=none] (1) at (-1, 0.5) {};
+		\node [style=none] (2) at (-1, -0.75) {};
+		\node [style=none] (3) at (1, -0.75) {};
+		\node [style=none] (4) at (1, 0.5) {};
+		\node [style=none] (20) at (0, 1) {};
+		\node [style=none] (21) at (0, 0.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (4.center) to (3.center);
+		\draw (3.center) to (2.center);
+		\draw (2.center) to (1.center);
+		\draw (1.center) to (4.center);
+		\draw (20.center) to (21.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

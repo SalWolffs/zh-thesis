@@ -1,0 +1,69 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (35) at (-7.5, 1) {};
+		\node [style=hadamard] (36) at (-7.5, 0) {\hnum{1}};
+		\node [style=none] (37) at (-6.5, 0.5) {$\coloneqq$};
+		\node [style=none] (38) at (-5.75, 1) {};
+		\node [style=hadamard] (39) at (-5.75, 0.5) {};
+		\node [style=gray dot] (40) at (-5.75, 0) {};
+		\node [style=none] (41) at (-5.25, 1) {};
+		\node [style=hadamard] (42) at (-5.25, 0) {\hnum{0}};
+		\node [style=none] (43) at (-4.25, 0.5) {$\coloneqq$};
+		\node [style=none] (44) at (-3.5, 1) {};
+		\node [style=hadamard] (45) at (-3.5, 0.5) {};
+		\node [style=white dot] (46) at (-3.5, 0) {};
+		\node [style=none] (47) at (-1.5, 1) {};
+		\node [style=hadamard] (48) at (-1.5, 0) {\hnum{\frac{1}{2}}};
+		\node [style=none] (49) at (-0.25, 0.5) {$\coloneqq$};
+		\node [style=none] (50) at (0.5, 1) {};
+		\node [style=hadamard] (51) at (0.5, 0.5) {};
+		\node [style=white dot] (52) at (0.75, 0) {};
+		\node [style=none] (53) at (6.5, 1) {};
+		\node [style=hadamard] (54) at (6.5, 0) {\hnum{-1}};
+		\node [style=none] (55) at (8, 0.5) {$\coloneqq$};
+		\node [style=none] (56) at (8.5, 1) {};
+		\node [style=hadamard] (57) at (8.5, 0) {};
+		\node [style=white dot] (59) at (0.25, 0) {};
+		\node [style=none] (60) at (10.75, 1) {};
+		\node [style=hadamard] (61) at (10.75, 0) {\hnum{-a}};
+		\node [style=none] (62) at (12.25, 0.5) {$\coloneqq$};
+		\node [style=none] (63) at (13.25, 1) {};
+		\node [style=hadamard] (64) at (13.75, 0.5) {};
+		\node [style=white dot] (65) at (13.25, 0.5) {};
+		\node [style=hadamard] (66) at (13.25, -0.25) {\hnum{a}};
+		\node [style=half] (67) at (0.25, -0.5) {};
+		\node [style=half] (68) at (0.75, -0.5) {};
+		\node [style=none] (69) at (2.5, 1) {};
+		\node [style=hadamard] (70) at (2.5, 0) {\hnum{2}};
+		\node [style=none] (71) at (3.75, 0.5) {$\coloneqq$};
+		\node [style=none] (72) at (4.5, 1) {};
+		\node [style=hadamard] (73) at (4.5, 0) {};
+		\node [style=white dot] (74) at (4.75, -0.5) {};
+		\node [style=white dot] (75) at (4.25, -0.5) {};
+		\node [style=gray dot] (78) at (4.5, 0.5) {$\sneg$};
+		\node [style=half] (79) at (4.5, -1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (35.center) to (36);
+		\draw (38.center) to (39);
+		\draw (40) to (39);
+		\draw (41.center) to (42);
+		\draw (44.center) to (45);
+		\draw (46) to (45);
+		\draw (47.center) to (48);
+		\draw (50.center) to (51);
+		\draw (52) to (51);
+		\draw (53.center) to (54);
+		\draw (56.center) to (57);
+		\draw (59) to (51);
+		\draw (60.center) to (61);
+		\draw (65) to (66);
+		\draw (65) to (64);
+		\draw (65) to (63.center);
+		\draw (69.center) to (70);
+		\draw (74) to (73);
+		\draw (75) to (73);
+		\draw (72.center) to (78);
+		\draw (78) to (73);
+	\end{pgfonlayer}
+\end{tikzpicture}

@@ -4,6 +4,7 @@
 \usepackage{amssymb}
 \usepackage{hyperref}
 \usepackage{amsfonts}
+\usepackage{mathtools}
 
 \usetikzlibrary{decorations.pathmorphing}
 \usetikzlibrary{fadings}
@@ -106,3 +107,16 @@
 \newcommand{\splitlemma}{\footnotesize\SplitLemma}
 \newcommand{\orthobangrule}{\footnotesize\OrthoBangRule}
 \newcommand{\idschur}{\footnotesize\IdSchur}
+
+%% Matrices
+\newcommand{\MIndexed}{$\bm{\left[} \begin{matrix}%
+M_{1,1} & \cdots & M_{1,m}\\
+\vdots & \ddots & \vdots\\
+M_{n,1} & \cdots & M_{n,m}
+\end{matrix}\bm{\right]}$}
+
+\newcommand{\SIndexed}{$\bm{\left[} \begin{matrix}%
+S_{1} \\
+\vdots \\
+S_{n}
+\end{matrix}\bm{\right]}$}
