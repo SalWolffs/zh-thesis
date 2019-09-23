@@ -1,0 +1,56 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=bitbox] (16) at (0, 1.75) {$b^n(i)$};
+		\node [style=bitbox] (18) at (0, -1.75) {$b^m(j)$};
+		\node [style=hadamard] (19) at (0, 0) {\ $M_{i,j}$\;};
+		\node [style=none] (20) at (-0.75, 1.25) {};
+		\node [style=none] (21) at (0.75, 1.25) {};
+		\node [style=none] (22) at (0.75, 0.25) {};
+		\node [style=none] (23) at (-0.75, 0.25) {};
+		\node [style=none] (24) at (-0.75, -0.25) {};
+		\node [style=none] (25) at (0.75, -0.25) {};
+		\node [style=none] (26) at (0.75, -1.25) {};
+		\node [style=none] (27) at (-0.75, -1.25) {};
+		\node [style=none] (34) at (0.75, 2.25) {};
+		\node [style=none] (35) at (-0.75, 2.25) {};
+		\node [style=none] (36) at (0, 2.75) {\ldots};
+		\node [style=none] (37) at (0, 0.75) {\ldots};
+		\node [style=none] (38) at (0, -0.75) {\ldots};
+		\node [style=none] (40) at (-2, 3.25) {};
+		\node [style=none] (41) at (-2, -3.25) {};
+		\node [style=none] (42) at (2, -3.25) {};
+		\node [style=none] (43) at (2, 3.25) {};
+		\node [style=none] (44) at (-3, 3.75) {$\textcolor{blue}{i,j \in \underline{n} \times \underline{m}}$};
+		\node [style=white dot] (45) at (-0.75, 3.75) {};
+		\node [style=white dot] (46) at (0.75, 3.75) {};
+		\node [style=none] (47) at (0, 3.75) {\ldots};
+		\node [style=none] (48) at (0.75, 4.5) {};
+		\node [style=none] (49) at (-0.75, 4.5) {};
+		\node [style=none] (50) at (-0.75, -2.25) {};
+		\node [style=none] (51) at (0.75, -2.25) {};
+		\node [style=white dot] (52) at (0.75, -3.75) {};
+		\node [style=white dot] (53) at (-0.75, -3.75) {};
+		\node [style=none] (54) at (0, -3.75) {\ldots};
+		\node [style=none] (55) at (-0.75, -4.5) {};
+		\node [style=none] (56) at (0.75, -4.5) {};
+		\node [style=none] (57) at (0, -2.75) {\ldots};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (20.center) to (23.center);
+		\draw (21.center) to (22.center);
+		\draw (24.center) to (27.center);
+		\draw (25.center) to (26.center);
+		\draw [style=blue] (43.center) to (42.center);
+		\draw [style=blue] (42.center) to (41.center);
+		\draw [style=blue] (41.center) to (40.center);
+		\draw [style=blue] (40.center) to (43.center);
+		\draw (48.center) to (46);
+		\draw (49.center) to (45);
+		\draw (45) to (35.center);
+		\draw (46) to (34.center);
+		\draw (50.center) to (53);
+		\draw (51.center) to (52);
+		\draw (53) to (55.center);
+		\draw (52) to (56.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

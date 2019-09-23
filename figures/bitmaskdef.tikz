@@ -1,0 +1,48 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=bitbox] (0) at (-1.5, 0) {\;  $\vec{b}$  \;};
+		\node [style=none] (1) at (-5.5, 0) {$\forall \vec{b} = b_1 \ldots b_n \in \mathbb{B}^n$};
+		\node [style=none] (2) at (-2, 1.25) {};
+		\node [style=none] (3) at (-1, 1.25) {};
+		\node [style=none] (4) at (-1, 0.5) {};
+		\node [style=none] (5) at (-2, 0.5) {};
+		\node [style=none] (6) at (-2, -0.5) {};
+		\node [style=none] (7) at (-1, -0.5) {};
+		\node [style=none] (8) at (-1, -1.25) {};
+		\node [style=none] (9) at (-2, -1.25) {};
+		\node [style=none] (10) at (-1.5, 1) {$\ldots$};
+		\node [style=none] (11) at (-1.5, -1) {$\ldots$};
+		\node [style=none] (12) at (0.5, 0) {$=$};
+		\node [style=none] (13) at (2, 1) {};
+		\node [style=none] (14) at (2, -1) {};
+		\node [style=gray dot] (17) at (2, 0) {$\sneg$};
+		\node [style=none] (18) at (1.75, 0.5) {};
+		\node [style=none] (19) at (1.75, -0.5) {};
+		\node [style=none] (20) at (2.25, 0.5) {};
+		\node [style=none] (21) at (2.25, -0.5) {};
+		\node [style=none] (22) at (3, 0.5) {$\scriptscriptstyle{1-b_1}$};
+		\node [style=none] (23) at (4.75, 1) {};
+		\node [style=none] (24) at (4.75, -1) {};
+		\node [style=gray dot] (25) at (4.75, 0) {$\sneg$};
+		\node [style=none] (26) at (4.5, 0.5) {};
+		\node [style=none] (27) at (4.5, -0.5) {};
+		\node [style=none] (28) at (5, 0.5) {};
+		\node [style=none] (29) at (5, -0.5) {};
+		\node [style=none] (30) at (5.75, 0.5) {$\scriptscriptstyle{1-b_n}$};
+		\node [style=none] (31) at (3.5, 0) {$\ldots$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (2.center) to (5.center);
+		\draw (3.center) to (4.center);
+		\draw (6.center) to (9.center);
+		\draw (7.center) to (8.center);
+		\draw (13.center) to (17);
+		\draw (17) to (14.center);
+		\draw [style=thin edge, bend right] (18.center) to (19.center);
+		\draw [style=thin edge, bend left] (20.center) to (21.center);
+		\draw (23.center) to (25);
+		\draw (25) to (24.center);
+		\draw [style=thin edge, bend right] (26.center) to (27.center);
+		\draw [style=thin edge, bend left] (28.center) to (29.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

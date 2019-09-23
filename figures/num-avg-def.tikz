@@ -1,0 +1,20 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=white dot] (0) at (4, 0.75) {};
+		\node [style=hadamard] (1) at (-0.75, -0.5) {$\hnum{AVG(a, b)}$};
+		\node [style=none] (2) at (2, 0) {$\coloneqq$};
+		\node [style=hadamard] (3) at (3.25, -0.25) {\hnum{a}};
+		\node [style=hadamard] (4) at (4.75, -0.25) {\hnum{b}};
+		\node [style=none] (5) at (4, 1.5) {};
+		\node [style=none] (6) at (-0.75, 0.75) {};
+		\node [style=gray dot] (7) at (4, -1.25) {$\sneg$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (5.center) to (0);
+		\draw [bend left] (0) to (4);
+		\draw [bend right] (0) to (3);
+		\draw (1) to (6.center);
+		\draw [bend right] (3) to (7);
+		\draw [bend right] (7) to (4);
+	\end{pgfonlayer}
+\end{tikzpicture}

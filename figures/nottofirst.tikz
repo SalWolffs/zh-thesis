@@ -1,0 +1,24 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (13) at (-1.25, 0.75) {};
+		\node [style=none] (14) at (-1.25, -0.75) {};
+		\node [style=gray dot] (17) at (-1.25, 0) {$\sneg$};
+		\node [style=none] (18) at (-1.5, 0.5) {};
+		\node [style=none] (19) at (-1.5, -0.5) {};
+		\node [style=none] (20) at (-1, 0.5) {};
+		\node [style=none] (21) at (-1, -0.5) {};
+		\node [style=none] (22) at (-0.75, 0.5) {$\scriptscriptstyle{1}$};
+		\node [style=none] (23) at (1, 0.75) {};
+		\node [style=none] (24) at (1, -0.75) {};
+		\node [style=gray dot] (25) at (1, 0) {$\sneg$};
+		\node [style=none] (31) at (0, 0) {$=$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (13.center) to (17);
+		\draw (17) to (14.center);
+		\draw [style=thin edge, bend right] (18.center) to (19.center);
+		\draw [style=thin edge, bend left] (20.center) to (21.center);
+		\draw (23.center) to (25);
+		\draw (25) to (24.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

@@ -1,0 +1,17 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=white dot] (0) at (3.75, 0) {};
+		\node [style=hadamard] (1) at (0, -0.5) {$\hnum{a \star b}$};
+		\node [style=none] (2) at (2, 0) {$\coloneqq$};
+		\node [style=hadamard] (3) at (3, -0.75) {\hnum{a}};
+		\node [style=hadamard] (4) at (4.5, -0.75) {\hnum{b}};
+		\node [style=none] (5) at (3.75, 0.75) {};
+		\node [style=none] (6) at (0, 0.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (5.center) to (0);
+		\draw [bend left=15] (0) to (4);
+		\draw [bend right=15] (0) to (3);
+		\draw (1) to (6.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

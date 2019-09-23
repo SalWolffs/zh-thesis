@@ -1,0 +1,5 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=hadamard] (47) at (0, 0) {\hnum{a}};
+	\end{pgfonlayer}
+\end{tikzpicture}

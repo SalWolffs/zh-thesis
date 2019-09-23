@@ -1,0 +1,34 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=hadamard] (36) at (1.25, -0.75) {\hnum{a}};
+		\node [style=hadamard] (37) at (1, 0.25) {};
+		\node [style=hadamard] (38) at (0, 0.5) {};
+		\node [style=none] (39) at (-0.5, -0.5) {};
+		\node [style=none] (40) at (0.5, -0.5) {};
+		\node [style=none] (41) at (-0.5, 1.5) {};
+		\node [style=none] (42) at (0.5, 1.5) {};
+		\node [style=none] (43) at (0, 1.25) {$\ldots$};
+		\node [style=none] (44) at (0, -0.25) {$\ldots$};
+		\node [style=half] (45) at (1, 1) {};
+		\node [style=none] (46) at (2.5, 0.25) {$\eqqcolon$};
+		\node [style=hadamard] (47) at (4.25, 0.5) {\hnum{a}};
+		\node [style=none] (48) at (3.75, -0.75) {};
+		\node [style=none] (49) at (4.75, -0.75) {};
+		\node [style=none] (50) at (3.75, 1.75) {};
+		\node [style=none] (51) at (4.75, 1.75) {};
+		\node [style=none] (52) at (4.25, 1.5) {$\ldots$};
+		\node [style=none] (53) at (4.25, -0.5) {$\ldots$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [bend left=15] (38) to (37);
+		\draw [bend left=15] (37) to (36);
+		\draw [bend left=15] (38) to (40.center);
+		\draw [bend right=15] (38) to (39.center);
+		\draw [bend left=15] (38) to (41.center);
+		\draw [bend right=15] (38) to (42.center);
+		\draw [bend left=15] (47) to (49.center);
+		\draw [bend right=15] (47) to (48.center);
+		\draw [bend left=15] (47) to (50.center);
+		\draw [bend right=15] (47) to (51.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

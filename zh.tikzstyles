@@ -11,7 +11,7 @@
 \tikzstyle{hadamard}=[fill=white, draw, inner sep=0.6mm, minimum height=1.5mm, minimum width=1.5mm, shape=rectangle, tikzit shape=rectangle, tikzit category=ZH-pf]
 \tikzstyle{small hadamard}=[fill=white, draw, inner sep=0.6mm, minimum height=1.5mm, minimum width=1.5mm, tikzit shape=rectangle]
 \tikzstyle{halfscalar}=[star, fill=black, draw=black, minimum size=8pt, inner sep=0pt]
-\tikzstyle{box}=[shape=rectangle, text height=1.5ex, text depth=0.25ex, yshift=0.2mm, fill=white, draw=black, minimum height=3mm, minimum width=5mm, font={\small}]
+\tikzstyle{box}=[shape=rectangle, text height=1.5ex, text depth=0.25ex, yshift=0.2mm, fill=white, draw=black, minimum height=3mm, minimum width=5mm, font={\small}, tikzit category=ZH-pf]
 \tikzstyle{Z dot}=[inner sep=0mm, minimum size=2mm, shape=circle, draw=black, fill={zx_green}]
 \tikzstyle{Z phase dot}=[minimum size=5mm, font={\footnotesize\boldmath}, shape=rectangle, rounded corners=2mm, inner sep=0.2mm, outer sep=-2mm, scale=0.8, tikzit shape=circle, draw=black, fill={zx_green}, tikzit draw=blue]
 \tikzstyle{X dot}=[Z dot, shape=circle, draw=black, fill={zx_red}]
@@ -28,7 +28,9 @@
 \tikzstyle{bitbox}=[fill={rgb,255: red,191; green,191; blue,191}, draw=black, shape=rectangle, tikzit category=ZH-pf]
 
 % Edge styles
+\tikzstyle{bounding}=[dashed, -]
 \tikzstyle{gray}=[-, draw={blue!60!white}, tikzit draw=blue]
 \tikzstyle{blue}=[-, draw={blue!60!white}, tikzit draw=blue]
 \tikzstyle{brace edge}=[-, tikzit draw=blue, decorate, decoration={brace,amplitude=1mm,raise=-1mm}]
 \tikzstyle{diredge}=[->]
+\tikzstyle{thin edge}=[-, thin]

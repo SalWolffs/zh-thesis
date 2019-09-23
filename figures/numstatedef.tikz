@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=gray dot] (35) at (0, 0.5) {};
+		\node [style=hadamard] (36) at (0, -0.25) {\hnum{a}};
+		\node [style=none] (37) at (1.25, 0) {$=$};
+		\node [style=none] (38) at (2, 0.75) {};
+		\node [style=none] (39) at (2, -0.75) {};
+		\node [style=none] (40) at (3.5, -0.75) {};
+		\node [style=none] (41) at (3.5, 0.75) {};
+		\node [style=none] (42) at (2, -0.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (35) to (36);
+		\draw [style=bounding] (38.center) to (41.center);
+		\draw [style=bounding] (41.center) to (40.center);
+		\draw [style=bounding] (39.center) to (40.center);
+		\draw [style=bounding] (38.center) to (42.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

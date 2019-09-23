@@ -1,0 +1,18 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=hadamard] (47) at (0, 0) {\hnum{a}};
+		\node [style=none] (48) at (1.25, 0) {$=$};
+		\node [style=hadamard] (49) at (2.75, -1) {\hnum{a}};
+		\node [style=hadamard] (50) at (2.5, -0.25) {};
+		\node [style=hadamard] (51) at (2, 0) {};
+		\node [style=half] (52) at (2.5, 0.5) {};
+		\node [style=none] (53) at (3.5, 0) {$=$};
+		\node [style=hadamard] (54) at (4.75, -0.5) {\hnum{a}};
+		\node [style=gray dot] (55) at (4.75, 0.25) {$\sneg$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [bend right=15] (49) to (50);
+		\draw [bend left=15] (51) to (50);
+		\draw (55) to (54);
+	\end{pgfonlayer}
+\end{tikzpicture}
